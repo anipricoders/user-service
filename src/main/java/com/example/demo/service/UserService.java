@@ -35,6 +35,6 @@ public class UserService {
 
 		public User loginUser(String email, String password) {
 			// TODO Auto-generated method stub
-			return userRepository.findByGmailAndPassword(email, password);
+			return userRepository.findByEmailAndPassword(email, password);
 		}
 }
