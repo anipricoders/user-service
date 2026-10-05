@@ -33,8 +33,28 @@ public class UserService {
 	        return userRepository.findById(id).orElse(null);
 	    }
 
-		public User loginUser(String email, String password) {
-			// TODO Auto-generated method stub
-			return userRepository.findByEmailAndPassword(email, password);
-		}
+	    public User loginUser(String email, String password) {
+
+	        System.out.println("Login Email: " + email);
+	        System.out.println("Login Password: " + password);
+
+	        User user =
+	                userRepository.findByEmailAndPassword(
+	                        email,
+	                        password
+	                );
+
+	        if (user == null) {
+
+	            System.out.println("USER NOT FOUND");
+
+	            throw new RuntimeException(
+	                    "Invalid email or password"
+	            );
+	        }
+
+	        System.out.println("USER FOUND: " + user.getName());
+
+	        return user;
+	    }
 }
