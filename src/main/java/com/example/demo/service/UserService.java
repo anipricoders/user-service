@@ -32,4 +32,9 @@ public class UserService {
 	    public User getUserById(Long id) {
 	        return userRepository.findById(id).orElse(null);
 	    }
+
+		public User loginUser(String email, String password) {
+			// TODO Auto-generated method stub
+			return userRepository.findByGmailAndPassword(email, password);
+		}
 }

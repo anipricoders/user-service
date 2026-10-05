@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 
-
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -18,25 +17,27 @@ public class UserController {
         this.userService = userService;
     }
 
-    // Register User
     @PostMapping("/register")
     public User registerUser(@RequestBody User user) {
-
         return userService.registerUser(user);
     }
 
-    // Get All Users
     @GetMapping
     public List<User> getAllUsers() {
-
         return userService.getAllUsers();
     }
 
-    // Get User By ID
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Long id) {
-
         return userService.getUserById(id);
     }
 
+    @PostMapping("/login")
+    public User loginUser(@RequestBody User user) {
+
+        return userService.loginUser(
+            user.getEmail(),
+            user.getPassword()
+        );
+    }
 }
